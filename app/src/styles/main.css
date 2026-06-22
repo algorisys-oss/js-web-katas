@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background-color: #0b0f17;
+  color: #e5e7eb;
+}
+
+/* Rendered kata markdown */
+.prose-kata h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem;
+  color: #f3f4f6;
+}
+.prose-kata h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 1rem 0 0.4rem;
+  color: #e5e7eb;
+}
+.prose-kata p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+.prose-kata ul,
+.prose-kata ol {
+  margin: 0.5rem 0 0.5rem 1.25rem;
+  list-style: revert;
+}
+.prose-kata li {
+  margin: 0.25rem 0;
+}
+.prose-kata blockquote {
+  border-left: 3px solid #6366f1;
+  padding: 0.25rem 0.75rem;
+  margin: 0.75rem 0;
+  background: rgba(99, 102, 241, 0.08);
+  color: #c7d2fe;
+}
+.prose-kata code {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: rgba(148, 163, 184, 0.15);
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.25rem;
+}
+.prose-kata pre {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+.prose-kata pre code {
+  background: none;
+  padding: 0;
+}
+.prose-kata a {
+  color: #818cf8;
+  text-decoration: underline;
+}
+
+/* CodeMirror should fill its tab panel */
+.cm-editor {
+  height: 100%;
+}
+.cm-scroller {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+}

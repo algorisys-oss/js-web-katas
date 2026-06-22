@@ -103,6 +103,8 @@ js-web-katas/
 │   ├── phase-02-functions-and-closures/
 │   └── ...
 ├── app/                                # SolidJS + Tailwind shell
+│   ├── public/
+│   │   └── fixtures/                   # Static JSON/data used by fetch katas (served at /fixtures)
 │   ├── src/
 │   │   ├── index.jsx                   # Entry point
 │   │   ├── components/                 # Editor, Preview, Console, Nav
@@ -112,13 +114,18 @@ js-web-katas/
 │   ├── index.html
 │   ├── package.json
 │   └── vite.config.js
-└── fixtures/                           # Static JSON/data used by fetch katas
 ```
 
-### Naming Conventions
-- All file and folder names: **lowercase-hyphenated**
+### Naming Conventions (STRICT)
+- **Every file and folder name is `lowercase-hyphenated`** — no exceptions for source,
+  content, components, assets, configs, or scripts. This includes app source files
+  (`kata-view.jsx`, `build-srcdoc.js`, `console-panel.jsx`), CSS, and fixtures.
+- The **only** uppercase names allowed are the conventional root docs:
+  `CLAUDE.md`, `README.md`, `TODO.md`, `LICENSE`.
 - Kata directories: `phase-XX-short-name/`
 - Kata files: `NNN-kata-title.md` (zero-padded sequence number)
+- No camelCase, snake_case, or PascalCase in file/folder names (camelCase stays *inside*
+  the code for identifiers; the file holding it is still hyphenated).
 
 ---
 
@@ -139,10 +146,8 @@ difficulty: "beginner"            # beginner | intermediate | advanced
 tags: ["dom", "rendering"]
 prerequisites: ["phase-06/001-selecting-elements"]
 estimated_minutes: 12
-starter:
-  html: true                      # which editor tabs this kata uses
-  css: false
-  js: true
+starter: ["html", "js"]           # which editor tabs this kata uses (any of html/css/js)
+network: false                    # true → iframe gets allow-same-origin so fetch() works
 ---
 
 ## Concept
