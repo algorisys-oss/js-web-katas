@@ -39,12 +39,44 @@ backend/Node.js). Everything here runs **client-side**: kata code executes in a 
 See [`TODO.md`](./TODO.md) for the full per-kata checklist and
 [`CLAUDE.md`](./CLAUDE.md) for the teaching contract and kata format.
 
+## Running the katas
+
+The katas run inside a small SolidJS app. You need [Node.js](https://nodejs.org) 18+.
+
+```bash
+cd app
+npm install      # first time only
+npm run dev      # starts the dev server (Vite prints a localhost URL)
+```
+
+Open the printed URL (typically <http://localhost:5173>). Pick a kata from the sidebar,
+edit the code in the editor tabs (HTML / CSS / JS), and press **▶ Run** or
+**Ctrl/Cmd + Enter**. Output appears in the live preview pane and the console panel.
+**Reset** restores the starter code.
+
+To build a static production bundle:
+
+```bash
+cd app
+npm run build    # outputs to app/dist
+npm run preview  # serve the built bundle locally
+```
+
+> Each kata runs in a sandboxed `<iframe>`. Katas that use `localStorage`, cookies,
+> IndexedDB, the Cache API, or `fetch()` set `network: true` in their frontmatter so the
+> sandbox grants same-origin access; fetch katas read local JSON from `app/public/fixtures/`.
+
+## Reading the katas without running them
+
+Every kata is a self-contained Markdown file under `katas/phase-XX-name/`, readable on its
+own (GitHub renders them fine). The app just makes the code runnable and interactive.
+
 ## Structure
 
 ```
-katas/        Markdown kata content (phase-XX-name/NNN-title.md)
-app/          SolidJS + Tailwind shell (editor, preview, console, nav)
-fixtures/     Static JSON used by fetch katas
+katas/                 Markdown kata content (phase-XX-name/NNN-title.md)
+app/                   SolidJS + Tailwind shell (editor, preview, console, nav)
+app/public/fixtures/   Static JSON served at /fixtures for the networking katas
 ```
 
 ## License
