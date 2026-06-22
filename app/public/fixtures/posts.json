@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "title": "Notes on the Analytical Engine",
+    "body": "The engine can do whatever we know how to order it to perform.",
+    "tags": ["history", "computing"],
+    "published": true
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "title": "Compilers are just translators",
+    "body": "A compiler turns human-readable code into machine instructions.",
+    "tags": ["compilers", "tooling"],
+    "published": true
+  },
+  {
+    "id": 3,
+    "userId": 1,
+    "title": "Loops and the imagination",
+    "body": "Iteration lets a small description stand for a large computation.",
+    "tags": ["algorithms"],
+    "published": false
+  },
+  {
+    "id": 4,
+    "userId": 4,
+    "title": "Checking the math by hand",
+    "body": "Trust, but verify every trajectory calculation.",
+    "tags": ["math", "space"],
+    "published": true
+  },
+  {
+    "id": 5,
+    "userId": 5,
+    "title": "Simplicity is a prerequisite for reliability",
+    "body": "Elegant code is easier to reason about and to trust.",
+    "tags": ["design", "correctness"],
+    "published": true
+  }
+]
