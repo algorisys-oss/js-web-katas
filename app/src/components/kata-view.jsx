@@ -54,6 +54,7 @@ export default function KataView(props) {
       css: code.css,
       js: code.js,
       token: RUNNER_TOKEN,
+      base: import.meta.env.BASE_URL,
     });
   };
 

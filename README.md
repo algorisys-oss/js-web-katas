@@ -66,6 +66,24 @@ npm run preview  # serve the built bundle locally
 > IndexedDB, the Cache API, or `fetch()` set `network: true` in their frontmatter so the
 > sandbox grants same-origin access; fetch katas read local JSON from `app/public/fixtures/`.
 
+## Deploying to GitHub Pages
+
+Publish the built app to the `gh-pages` branch of your `origin` remote:
+
+```bash
+npm run deploy --prefix app          # builds and force-publishes to gh-pages
+# or: bash scripts/deploy-pages.sh
+```
+
+It builds with the correct project-site base path (default `/js-web-katas/`), adds an SPA
+`404.html` fallback and `.nojekyll`, then commits the build to `gh-pages` via a git
+worktree and pushes. The runner rewrites the fetch katas' `/fixtures/...` requests to the
+deployed base path so they keep working under a project URL.
+
+Overrides: `BASE_PATH=/ bash scripts/deploy-pages.sh` (site root / custom domain),
+`GH_PAGES_BRANCH`, `GH_PAGES_REMOTE`. First time only: in the repo's
+**Settings → Pages**, set Source to *Deploy from a branch*, Branch `gh-pages` / (root).
+
 ## Reading the katas without running them
 
 Every kata is a self-contained Markdown file under `katas/phase-XX-name/`, readable on its

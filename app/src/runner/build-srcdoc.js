@@ -5,9 +5,22 @@
 
 export const RUNNER_TOKEN = 'js-web-katas-runner';
 
-function bridgeScript(token) {
+function bridgeScript(token, base) {
   return `<script>(function(){
   var TOKEN = ${JSON.stringify(token)};
+  var BASE = ${JSON.stringify(base)};
+  // Fetch katas request '/fixtures/...'. Under a project-site base path
+  // (e.g. GitHub Pages '/js-web-katas/') that absolute root path would 404, so
+  // rewrite a leading '/fixtures/' to the app's actual base.
+  if (BASE && BASE !== '/') {
+    var nativeFetch = window.fetch.bind(window);
+    window.fetch = function(input, init){
+      if (typeof input === 'string' && input.indexOf('/fixtures/') === 0) {
+        input = BASE.replace(/\\/$/, '') + input;
+      }
+      return nativeFetch(input, init);
+    };
+  }
   function format(value){
     if (typeof value === 'string') return value;
     if (value instanceof Error) return value.name + ': ' + value.message;
@@ -40,13 +53,13 @@ function bridgeScript(token) {
 })();<\/script>`;
 }
 
-export function buildSrcdoc({ html = '', css = '', js = '', token = RUNNER_TOKEN }) {
+export function buildSrcdoc({ html = '', css = '', js = '', token = RUNNER_TOKEN, base = '/' }) {
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-${bridgeScript(token)}
+${bridgeScript(token, base)}
 <style>
 body { font-family: system-ui, sans-serif; margin: 1rem; color: #111; }
 ${css}
