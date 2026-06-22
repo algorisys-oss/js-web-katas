@@ -101,4 +101,3 @@ with `Promise.all` and awaiting once is usually far faster.
   `await`, no `.then`) won't see errors or wait for completion.
 - Believing `await` blocks the thread. It yields to the event loop; other tasks and
   microtasks run while it's "paused."
-</content>

@@ -94,8 +94,11 @@ In the **preview**, each click updates the badge (`Cart: 1 items ($49)`, then
 
 ## Deep Dive
 
-`detail` exists because you cannot add arbitrary own-properties to a native `Event` and
-have them survive — `CustomEvent` standardizes the single payload slot. Custom events are
+`detail` is the **standardized** payload slot for custom events. `Event` objects are
+ordinary extensible objects, so you *can* tack your own properties onto one — but that's
+ad-hoc and gives listeners no contract to rely on. Putting your data in `detail` is the
+convention every consumer expects, and `CustomEvent` makes it a first-class constructor
+option. Custom events are
 the foundation of Web Components' public API (Phase 14): a component signals state changes
 by dispatching events its host page listens for, keeping the component's internals private.
 Note that `dispatchEvent` is **synchronous** — unlike a real user click queued by the

@@ -106,4 +106,3 @@ which the browser runs after each task and after each callback returns to the ev
   current drain — the queue is emptied to zero before moving on.
 - Flooding the microtask queue (e.g. recursive promise chains) and wondering why timers
   and animation stall. Microtasks can starve macrotasks and rendering.
-</content>

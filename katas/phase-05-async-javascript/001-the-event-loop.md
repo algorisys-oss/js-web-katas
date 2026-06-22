@@ -97,4 +97,3 @@ every other "later," is just work the event loop can't reach until you return.
   just later; only Web Workers get a separate thread.
 - Expecting timer delays to be exact. The delay is a *minimum*; the callback waits for both
   the timer and a free thread.
-</content>

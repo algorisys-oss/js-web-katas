@@ -111,8 +111,10 @@ in a module), so `typeof this` is `"undefined"`. Inside `map`, a plain callback 
 ## Deep Dive
 
 `bind` returns a *new* function permanently locked to a `this` (and optionally pre-filled
-leading arguments — partial application, see kata 5). Once bound, it ignores later `call`,
-`apply`, or even `new` attempts to change `this`. Arrow functions go further: they have no
+leading arguments — partial application, see kata 5). Once bound, it ignores later `call` or
+`apply` attempts to change `this`. The one exception is `new`: calling `new boundFn()`
+*ignores* the bound `this` and uses the freshly constructed instance instead (any bound
+arguments are still applied). Arrow functions go further: they have no
 `this`, `arguments`, `super`, or `new.target` of their own and cannot be used with `new` at
 all. That's why arrows are perfect for short callbacks but wrong for object methods and
 constructors. Class fields assigned as arrows (`onClick = () => {}`) are a common way to get

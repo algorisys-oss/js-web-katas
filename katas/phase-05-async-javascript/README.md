@@ -35,5 +35,3 @@ scheduling. Get the ordering right once and asynchronous code stops being myster
 
 Phase 6 — The DOM: selecting, traversing, and mutating the live document tree that all of
 this asynchronous work usually exists to update.
-</content>
-</invoke>

@@ -27,9 +27,11 @@ phase comes together here. A PWA is three plain pieces wired together:
    app *work offline*.
 3. **HTTPS** — installability and service workers both require a secure context.
 
-When those are present, the browser fires a `beforeinstallprompt` event you can capture to show
-your own "Install" button, calling `event.prompt()` on a user gesture. There is nothing magic:
-a PWA is a regular page plus a manifest plus a worker.
+When those are present, Chromium-family browsers fire a `beforeinstallprompt` event you can
+capture to show your own "Install" button, calling `event.prompt()` on a user gesture. Treat
+it as a progressive enhancement, not a guarantee: it is **non-standard and limited** — Safari
+and Firefox don't fire it, and even some installable PWAs never do. There is nothing magic
+underneath: a PWA is a regular page plus a manifest plus a worker.
 
 ## Key Insight
 

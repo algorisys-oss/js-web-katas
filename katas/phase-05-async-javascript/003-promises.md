@@ -110,4 +110,3 @@ one is usually the difference between robust and brittle async code.
   `unhandledrejection` event — always end a chain with `.catch` (or `await` in a `try`).
 - Assuming `.then` runs synchronously. Even an already-resolved promise defers its callback
   to a microtask, so synchronous code after it runs first.
-</content>

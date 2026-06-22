@@ -14,9 +14,12 @@ network: false
 ## Concept
 
 Reading every control one `getElementById` at a time is tedious and brittle. The platform
-gives you **`FormData`**: pass a `<form>` to its constructor and it harvests every *named,
-enabled* control into a key/value collection for you — exactly the data the browser would
-send if the form submitted.
+gives you **`FormData`**: pass a `<form>` to its constructor and it harvests the form's
+*successful controls* into a key/value collection — exactly the data the browser would send
+if the form submitted. "Successful" is narrower than "named and enabled": an **unchecked**
+checkbox or radio contributes nothing, disabled controls are skipped, and a submit button's
+value is included only when you tell `FormData` which button submitted the form
+(`new FormData(form, submitter)`).
 
 The natural place to build it is the form's **`submit`** event. But that event's default
 action is to **navigate the browser** (reload or go to the `action` URL). For a JavaScript

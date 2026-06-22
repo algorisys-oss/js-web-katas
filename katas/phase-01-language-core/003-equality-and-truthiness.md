@@ -25,9 +25,12 @@ A few `==` rules are actually useful to know rather than memorize wholesale:
 coerced toward numbers. That's why `'' == 0`, `'0' == 0`, and `[] == 0` are all `true`.
 
 Separately, every value is either **truthy** or **falsy** when used in a boolean context.
-There are exactly **eight falsy values**: `false`, `0`, `-0`, `0n`, `''`, `null`,
-`undefined`, and `NaN`. **Everything else is truthy** — including `'0'`, `'false'`, `[]`,
-and `{}`. Empty arrays and objects being truthy trips up almost everyone.
+In ordinary JavaScript you'll care about these **eight falsy values**: `false`, `0`, `-0`,
+`0n`, `''`, `null`, `undefined`, and `NaN`. **Everything else is truthy** — including `'0'`,
+`'false'`, `[]`, and `{}`. Empty arrays and objects being truthy trips up almost everyone.
+(Browsers also carry one historical oddity: the legacy `document.all` is falsy by design —
+a compatibility hack so old feature-detection code keeps working — but you'll essentially
+never depend on it.)
 
 ## Key Insight
 

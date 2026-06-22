@@ -115,4 +115,3 @@ reject with a `DOMException` named `'AbortError'`.
   underlying work (or a leaked listener) lingers even though the promise rejected.
 - Treating an `AbortError` like a real failure. Cancellation is usually expected — detect
   `err.name === 'AbortError'` and exit quietly rather than showing an error to the user.
-</content>

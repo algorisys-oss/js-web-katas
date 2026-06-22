@@ -21,8 +21,12 @@ few homes, each with a different threat model:
   - **`HttpOnly`** — the cookie is invisible to `document.cookie`, so **XSS can't read
     it**. This is the single most important protection for a session token.
   - **`Secure`** — sent only over HTTPS.
-  - **`SameSite=Lax|Strict`** — not sent on cross-site requests, the core defense against
-    **CSRF** (a malicious site forging a request that rides your cookie).
+  - **`SameSite`** — the core defense against **CSRF** (a malicious site forging a request
+    that rides your cookie). **`Strict`** withholds the cookie from *all* cross-site
+    requests. **`Lax`** (the modern default) still sends it on top-level *safe* navigations
+    — e.g. when a user follows a normal link to your site — but withholds it from
+    cross-site subrequests like form `POST`s, `fetch`/XHR, and embedded resources. So `Lax`
+    stops the classic auto-submitting-form CSRF but not a forged top-level GET.
 - **`localStorage` / `sessionStorage`** — plain JS-readable key/value strings. Convenient,
   but **any XSS on your origin can read every token in them** — there is no `HttpOnly`
   equivalent. Storing access tokens here trades a cookie risk (CSRF) for a worse one
