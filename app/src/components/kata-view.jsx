@@ -1,4 +1,4 @@
-import { createSignal, createEffect, onMount, onCleanup } from 'solid-js';
+import { createSignal, createEffect, onMount, onCleanup, on } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import CodeEditor from './code-editor.jsx';
 import PreviewPane from './preview-pane.jsx';
@@ -27,7 +27,9 @@ export default function KataView(props) {
   const [code, setCode] = createStore(seed(props.kata));
   const [logs, setLogs] = createSignal([]);
   const [reloadCount, setReloadCount] = createSignal(0);
+  const [live, setLive] = createSignal(true);
   let iframeEl;
+  let debounceTimer;
 
   // Re-seed editor + clear console whenever the selected kata changes.
   createEffect(() => {
@@ -64,6 +66,19 @@ export default function KataView(props) {
     setReloadCount((n) => n + 1);
   };
 
+  // Live preview: re-run a short debounce after any edit (or kata switch, which
+  // re-seeds `code`). The `on` form tracks only the code, not `live`, so toggling
+  // Live off stops scheduling without itself triggering a run.
+  createEffect(
+    on([() => code.html, () => code.css, () => code.js], () => {
+      if (!live()) return;
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(run, 400);
+    }),
+  );
+
+  onCleanup(() => clearTimeout(debounceTimer));
+
   return (
     <div class="grid h-full grid-cols-1 lg:grid-cols-2">
       {/* Left: kata content */}
@@ -92,7 +107,19 @@ export default function KataView(props) {
           <span class="text-xs font-semibold uppercase tracking-wide text-slate-400">
             Playground
           </span>
-          <div class="flex gap-2">
+          <div class="flex items-center gap-2">
+            <label
+              class="flex cursor-pointer select-none items-center gap-1.5 text-xs text-slate-400"
+              title="Re-run automatically as you type"
+            >
+              <input
+                type="checkbox"
+                checked={live()}
+                onChange={(e) => setLive(e.currentTarget.checked)}
+                class="accent-indigo-500"
+              />
+              Live
+            </label>
             <button
               type="button"
               onClick={reset}
