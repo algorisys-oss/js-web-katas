@@ -59,6 +59,9 @@ function PhaseGroup(props) {
  *  - selected: current kata
  *  - onSelect(kata)
  */
+// Update this if the repository moves.
+const REPO_URL = 'https://github.com/algorisys/js-web-katas';
+
 export default function PhaseNav(props) {
   return (
     <nav class="flex h-full flex-col bg-slate-900">
@@ -78,6 +81,28 @@ export default function PhaseNav(props) {
           )}
         </For>
       </div>
+      <footer class="shrink-0 border-t border-slate-800 px-3 py-3">
+        <a
+          href={REPO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 rounded border border-slate-700 px-2.5 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-amber-400/60 hover:bg-slate-800 hover:text-amber-300"
+        >
+          <span aria-hidden="true">★</span>
+          Star on GitHub
+        </a>
+        <p class="mt-2.5 text-[11px] leading-snug text-slate-500">
+          Developed by{' '}
+          <a
+            href="https://github.com/algorisys"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-slate-200"
+          >
+            Algorisys Open Source Team
+          </a>
+        </p>
+      </footer>
     </nav>
   );
 }
