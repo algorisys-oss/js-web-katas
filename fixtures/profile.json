@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Ada Lovelace",
+  "username": "ada",
+  "bio": "Mathematician. Wrote the first algorithm intended for a machine.",
+  "joined": "2026-01-15",
+  "stats": {
+    "posts": 2,
+    "followers": 1843,
+    "following": 12
+  }
+}
