@@ -4,8 +4,8 @@ import PhaseNav from './components/phase-nav.jsx';
 import KataView from './components/kata-view.jsx';
 
 // Update these if the repository moves.
-const REPO_URL = 'https://github.com/algorisys/js-web-katas';
-const ORG_URL = 'https://github.com/algorisys';
+const REPO_URL = 'https://github.com/algorisys-oss/js-web-katas';
+const ORG_URL = 'https://github.com/algorisys-oss';
 
 export default function App() {
   const phases = loadPhases();
